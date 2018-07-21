@@ -1,0 +1,15 @@
+{
+  "apps": [{
+    "name": "blog",
+    "script": "production.js",
+    "cwd": "C:\Users\jinsong5\Desktop\blog",
+    "exec_mode": "fork",
+    "max_memory_restart": "1G",
+    "autorestart": true,
+    "node_args": [],
+    "args": [],
+    "env": {
+      
+    }
+  }]
+}

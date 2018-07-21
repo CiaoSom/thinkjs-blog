@@ -1,0 +1,33 @@
+<%include header.html%>
+    <body>
+        <%include navbar.html%>
+            <article class="main-content page-page" >
+                <div class="post-header">
+                    <h1 class="post-title"><%=content.title%></h1>
+                    <div class="post-data">
+                        <time datetime="<%= think.datetime(content.create_time*1000, 'MM DD, YYYY')%>" >Published&nbsp;&nbsp;on&nbsp;&nbsp;
+                            <%=think.datetime(content.create_time*1000,'MM DD, YYYY')%>
+                        </time>&nbsp;&nbsp;in&nbsp;&nbsp;
+                        <a href="<%=site.url %>/category/<%= content.category.slug %>/">
+                            <%=content.category.slug%>
+                        </a>
+                    </div>
+                </div>
+                <div id="post-content" class="post-content">
+                    <p class="post-tags">
+                        <%content.tag.forEach(function(tag){%>
+                            <a href="<%=site.url %>/tag/<%= tag.slug %>/">
+                                <%=tag.slug%>
+                            </a>
+                            <%});%>
+                    </p>
+                    <%-content.content%>
+            
+                </div>
+            </article>
+          
+               
+                <%include footer.html%>
+    </body>
+
+</html>
