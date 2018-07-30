@@ -37,13 +37,13 @@ exports.model = {
   },
   mysql: {
     handle: mysql,
-    database: '这里是你数据库的名字',
-    prefix: '这里是你数据库的前缀',
+    database: 'blog',
+    prefix: 'ls_',
     encoding: 'utf8',
-    host: '数据库IP',
-    port: '数据库端口号',
-    user: '登录数据库用户',
-    password: '登录数据库用户密码',
+    host: '47.75.112.152',
+    port: '3306',
+    user: 'root',
+    password: 'Chesong918..',
     dateStrings: true
   }
 };

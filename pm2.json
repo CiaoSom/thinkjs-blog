@@ -1,6 +1,6 @@
 {
   "apps": [{
-    "name": "blog",
+    "name": "cjs-blog",
     "script": "production.js",
     "cwd": "C:\Users\jinsong5\Desktop\blog",
     "exec_mode": "fork",
