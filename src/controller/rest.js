@@ -15,17 +15,7 @@ module.exports = class extends think.Controller {
 
     async __before(action) {
         this.header('Access-Control-Allow-Origin', '*');
-        const url = this.get('url')
-        const ticket = await this.getTicket()
-        
-        const string1=`jsapi_ticket=${ticket}&noncestr=${config.noncestr}&timestamp=${new Date().getTime()}&url=${url}`
-        this.wxData = url? Object.assign({},{
-            appId:config.appId,
-            signature:sha1(string1),
-            timestamp:new Date().getTime(),
-            noncestr:config.noncestr
-        }):{};
-
+       
         try {
             this.userInfo = await this.ctx.session('userInfo');
         } catch (err) {
@@ -132,41 +122,4 @@ module.exports = class extends think.Controller {
         this.header("Access-Control-Allow-Methods", "GET,POST,OPTIONS,PUT,DELETE");
         this.header('Access-Control-Allow-Credentials', 'true');
     }
-
-    async getAT() {
-      return new Promise((res,rej)=>{
-        request.get({
-            url: 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='+config.appId+'&secret=f938c3b8f804b5d479d2034342ad4669',
-        },
-        function(error, response, body) {
-            const data = JSON.parse(body)
-            if(data.errcode){
-
-                rej(data)
-            }else{
-                res(data.access_token)
-            }
-  
-        });
-      })
-    }
-    async getTicket(){
-      const at = await this.getAT()
-
-    
-      return new Promise((res,rej)=>{
-         if(at.errcode){
-           
-            return rej(at)
-         }
-         request.get({
-            url: 'https://api.weixin.qq.com/cgi-bin/ticket/getticket?access_token='+at+'&type=jsapi',
-        },
-        function(error,response,body) {
-     
-           res(JSON.parse(body).ticket)
-        });
-      })
-    }
-
 };
