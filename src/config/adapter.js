@@ -40,10 +40,10 @@ exports.model = {
     database: 'blog',
     prefix: 'ls_',
     encoding: 'utf8',
-    host: '47.75.112.152',
+    host: 'xxxx',
     port: '3306',
     user: 'root',
-    password: 'Chesong918..',
+    password: 'xxxx',
     dateStrings: true
   }
 };
